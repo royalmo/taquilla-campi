@@ -1,0 +1,64 @@
+{
+  "name": "taquilla-campi",
+  "version": "0.1.0",
+  "description": "Counter ticket management desktop app for Campi Qui Jugui.",
+  "main": "./out/main/index.js",
+  "private": true,
+  "license": "GPL-3.0-only",
+  "scripts": {
+    "dev": "electron-vite dev",
+    "typecheck": "tsc --noEmit",
+    "build": "npm run typecheck && electron-vite build",
+    "dist": "npm run build && electron-builder",
+    "dist:win": "npm run build && electron-builder --win",
+    "dist:win:portable": "npm run build && electron-builder --win portable"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@types/node": "^24.12.2",
+    "electron": "^41.5.0",
+    "electron-builder": "^26.8.1",
+    "electron-vite": "^5.0.0",
+    "typescript": "^6.0.3",
+    "vite": "^7.3.2"
+  },
+  "build": {
+    "appId": "cat.cae.taquillacampi",
+    "productName": "Taquilla Campi",
+    "asar": true,
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "out/**",
+      "package.json"
+    ],
+    "win": {
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        },
+        {
+          "target": "portable",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "createStartMenuShortcut": true,
+      "shortcutName": "Taquilla Campi"
+    },
+    "artifactName": "${productName}-${version}-${arch}.${ext}"
+  },
+  "engines": {
+    "node": "24.x"
+  }
+}

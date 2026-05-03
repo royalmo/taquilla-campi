@@ -1,0 +1,12 @@
+node_modules/
+out/
+release/
+dist/
+*.log
+.DS_Store
+Thumbs.db
+.env
+.env.*
+!.env.example
+future-prompts.txt
+.codex
