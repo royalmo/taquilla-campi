@@ -6,16 +6,25 @@
   "private": true,
   "license": "GPL-3.0-only",
   "scripts": {
-    "dev": "electron-vite dev",
+    "dev": "node ./scripts/run-electron-vite.mjs dev",
     "typecheck": "tsc --noEmit",
     "build": "npm run typecheck && electron-vite build",
     "dist": "npm run build && electron-builder",
     "dist:win": "npm run build && electron-builder --win",
     "dist:win:portable": "npm run build && electron-builder --win portable"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@mantine/core": "^9.1.1",
+    "@mantine/form": "^9.1.1",
+    "@mantine/hooks": "^9.1.1",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5"
+  },
   "devDependencies": {
     "@types/node": "^24.12.2",
+    "@types/react": "^19.2.2",
+    "@types/react-dom": "^19.2.2",
+    "@vitejs/plugin-react": "^5.2.0",
     "electron": "^41.5.0",
     "electron-builder": "^26.8.1",
     "electron-vite": "^5.0.0",
@@ -24,7 +33,7 @@
   },
   "build": {
     "appId": "cat.cae.taquillacampi",
-    "productName": "Taquilla Campi",
+    "productName": "Gestor de Taquilles del Campi Qui Jugui",
     "asar": true,
     "directories": {
       "output": "release"
@@ -33,7 +42,14 @@
       "out/**",
       "package.json"
     ],
+    "extraResources": [
+      {
+        "from": "build/icon.png",
+        "to": "assets/icon.png"
+      }
+    ],
     "win": {
+      "icon": "build/icon.ico",
       "target": [
         {
           "target": "nsis",
@@ -54,7 +70,7 @@
       "allowToChangeInstallationDirectory": true,
       "createDesktopShortcut": true,
       "createStartMenuShortcut": true,
-      "shortcutName": "Taquilla Campi"
+      "shortcutName": "Gestor de Taquilles del Campi Qui Jugui"
     },
     "artifactName": "${productName}-${version}-${arch}.${ext}"
   },
