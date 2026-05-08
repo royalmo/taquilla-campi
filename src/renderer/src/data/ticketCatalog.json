@@ -1,0 +1,39 @@
+{
+  "currency": "EUR",
+  "standard-prices": [
+    {
+      "id": "nadons",
+      "label": "Nadons",
+      "priceCents": 0
+    },
+    {
+      "id": "menors-3-anys",
+      "label": "Menors 3 anys",
+      "priceCents": 200
+    },
+    {
+      "id": "de-3-a-7-anys",
+      "label": "De 3 a 7 anys",
+      "priceCents": 600
+    },
+    {
+      "id": "de-8-a-16-anys",
+      "label": "De 8 a 16 anys",
+      "priceCents": 600
+    },
+    {
+      "id": "majors-16-anys",
+      "label": "Majors 16 anys",
+      "priceCents": 200
+    }
+  ],
+  "discounts": [
+    {
+      "id": "familia-nombrosa",
+      "label": "Família nombrosa",
+      "type": "percentage",
+      "percentOff": 10
+    }
+  ],
+  "packs": []
+}

@@ -129,16 +129,139 @@ body {
 .panel-surface {
   flex: 1;
   min-height: 0;
+  overflow: hidden;
+  padding: 12px;
   border-color: var(--surface-border);
   background-color: var(--surface-background);
 }
 
 .tabs-panel {
   height: 100%;
+  min-height: 0;
 }
 
 .empty-panel {
   height: 100%;
+}
+
+.sales-panel {
+  display: grid;
+  height: 100%;
+  min-height: 0;
+  grid-template-rows: minmax(0, 3fr) minmax(176px, 2fr);
+  gap: 12px;
+}
+
+.sales-primary {
+  display: grid;
+  min-height: 0;
+  grid-template-columns: minmax(0, 2fr) minmax(300px, 1fr);
+  gap: 12px;
+}
+
+.ticket-list-panel,
+.invoice-panel,
+.checkout-panel {
+  min-height: 0;
+  border-color: var(--surface-border);
+  background-color: #fffdfc;
+}
+
+.ticket-list-panel,
+.invoice-panel {
+  display: flex;
+  flex-direction: column;
+  padding: 16px;
+}
+
+.panel-heading {
+  flex-shrink: 0;
+  margin-bottom: 12px;
+}
+
+.panel-title {
+  color: var(--text-color);
+  font-size: 1.18rem;
+  line-height: 1.2;
+  letter-spacing: 0;
+}
+
+.ticket-list-scroll,
+.invoice-scroll {
+  flex: 1;
+  min-height: 0;
+}
+
+.ticket-list {
+  padding-right: 2px;
+}
+
+.ticket-row {
+  border-color: #e6d6d2;
+  background: #ffffff;
+}
+
+.ticket-row-inner {
+  min-height: 74px;
+  padding: 12px 14px;
+}
+
+.ticket-copy {
+  min-width: 0;
+}
+
+.quantity-control {
+  flex-shrink: 0;
+}
+
+.quantity-input {
+  width: 70px;
+  height: 36px;
+  text-align: center;
+  font-weight: 800;
+}
+
+.invoice-panel {
+  gap: 0;
+}
+
+.invoice-table td {
+  border-bottom-color: #efe2df;
+}
+
+.empty-summary {
+  display: grid;
+  min-height: 140px;
+  height: 100%;
+  place-items: center;
+  border: 1px dashed #e3d0cd;
+  border-radius: 6px;
+  background-color: #fffafa;
+}
+
+.invoice-total-row {
+  flex-shrink: 0;
+  padding-top: 12px;
+}
+
+.sales-checkout {
+  display: grid;
+  min-height: 0;
+  grid-template-columns: minmax(220px, 1fr) minmax(240px, 0.85fr) minmax(310px, 1fr);
+  gap: 12px;
+}
+
+.checkout-panel {
+  padding: 16px;
+}
+
+.totals-panel {
+  align-self: stretch;
+}
+
+.rectified-total {
+  font-size: 1.9rem;
+  line-height: 1;
 }
 
 @media (max-width: 900px) {
@@ -169,9 +292,44 @@ body {
     height: 42px;
     max-width: min(12vw, 78px);
   }
+
+  .panel-surface {
+    padding: 10px;
+  }
+
+  .sales-panel {
+    grid-template-rows: minmax(0, 3fr) minmax(220px, 2fr);
+  }
+
+  .sales-primary {
+    grid-template-columns: minmax(0, 1.55fr) minmax(270px, 1fr);
+  }
+
+  .sales-checkout {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .totals-panel {
+    grid-column: 1 / -1;
+  }
 }
 
 @media (max-width: 640px) {
+  body {
+    overflow: auto;
+  }
+
+  html,
+  body,
+  #app {
+    min-height: 100%;
+    height: auto;
+  }
+
+  .app-layout {
+    min-height: 100vh;
+  }
+
   .topbar-inner {
     gap: 12px;
     align-items: center;
@@ -204,5 +362,40 @@ body {
   .tabs-tab {
     height: 38px;
     font-size: 0.92rem;
+  }
+
+  .sales-panel,
+  .sales-primary,
+  .sales-checkout {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .sales-panel {
+    height: auto;
+  }
+
+  .ticket-list-panel,
+  .invoice-panel,
+  .checkout-panel {
+    flex: none;
+  }
+
+  .ticket-row-inner {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .quantity-control {
+    width: 100%;
+    justify-content: flex-end;
+  }
+
+  .invoice-scroll {
+    min-height: 150px;
+  }
+
+  .rectified-total {
+    font-size: 1.6rem;
   }
 }
